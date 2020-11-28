@@ -23,12 +23,8 @@ var usersSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    room_id: {
-        type: String,
-        required: true
-    },
     keywords: {
-        type: String,
+        type: Array,
     },
     created_at: {
         type: Date,

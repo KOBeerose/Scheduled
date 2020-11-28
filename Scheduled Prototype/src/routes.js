@@ -15,7 +15,7 @@ var usersController = require('./controllers/usersController');
 router.route('/users')
     .get(usersController.index)
     .post(usersController.add);
-router.route('/users/:users_id')
+router.route('/users/:user_id')
     .get(usersController.view)
     .patch(usersController.update)
     .put(usersController.update)
@@ -26,7 +26,7 @@ var roomsController = require('./controllers/roomsController');
 router.route('/rooms')
     .get(roomsController.index)
     .post(roomsController.add);
-router.route('/rooms/:rooms_id')
+router.route('/rooms/:room_id')
     .get(roomsController.view)
     .patch(roomsController.update)
     .put(roomsController.update)
@@ -37,10 +37,14 @@ var companiesController = require('./controllers/companiesController');
 router.route('/companies')
     .get(companiesController.index)
     .post(companiesController.add);
-router.route('/companies/:companies_id')
+router.route('/companies/:company_id')
     .get(companiesController.view)
     .patch(companiesController.update)
     .put(companiesController.update)
     .delete(companiesController.delete);
+router.route('/:company_id')
+    .get(companiesController.viewdetails)
+router.route('/:company_id/:room_code')
+    .get(roomsController.viewdetails)
 //Export API routes
 module.exports = router;

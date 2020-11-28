@@ -24,7 +24,6 @@ exports.add = function (req, res) {
     companies.phone = req.body.phone;
     companies.address = req.body.address;
     companies.password = req.body.password;
-    companies.rooms_id = req.body.rooms_id;
     companies.details = req.body.details;
     //Save and check error
     companies.save(function (err) {
@@ -38,7 +37,7 @@ exports.add = function (req, res) {
 };
 // View companies
 exports.view = function (req, res) {
-    Company.findById(req.params.companies_id, function (err, companies) {
+    Company.findById(req.params.company_id, function (err, companies) {
         if (err)
             res.send(err);
         res.json({
@@ -47,9 +46,19 @@ exports.view = function (req, res) {
         });
     });
 };
+exports.viewdetails = function (req, res) {
+    Company.findById(req.params.company_id, function (err, companies) {
+        if (err)
+            res.send(err);
+        res.json({
+            message: "name: " + companies.name + " details: " + companies.details,
+        });
+    });
+};
+
 // Update companies
 exports.update = function (req, res) {
-    Company.findById(req.params.companies_id, function (err, companies) {
+    Company.findById(req.params.company_id, function (err, companies) {
         if (err)
             res.send(err);
         companies.name = req.body.name ? req.body.name : companies.name;
@@ -57,7 +66,6 @@ exports.update = function (req, res) {
         companies.phone = req.body.phone;
         companies.address = req.body.address;
         companies.password = req.body.password;
-        companies.rooms_id = req.body.rooms_id;
         companies.details = req.body.details;
         //save and check errors
         companies.save(function (err) {
@@ -73,7 +81,7 @@ exports.update = function (req, res) {
 // Delete companies
 exports.delete = function (req, res) {
     Company.deleteOne({
-        _id: req.params.companies_id
+        _id: req.params.company_id
     }, function (err, contact) {
         if (err)
             res.send(err)

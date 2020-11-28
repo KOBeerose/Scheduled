@@ -24,7 +24,6 @@ exports.add = function (req, res) {
     users.phone = req.body.phone;
     users.address = req.body.address;
     users.password = req.body.password;
-    users.room_id = req.body.room_id;
     users.keywords = req.body.keywords;
     //Save and check error
     users.save(function (err) {
@@ -38,7 +37,7 @@ exports.add = function (req, res) {
 };
 // View users
 exports.view = function (req, res) {
-    User.findById(req.params.users_id, function (err, users) {
+    User.findById(req.params.user_id, function (err, users) {
         if (err)
             res.send(err);
         res.json({
@@ -49,7 +48,7 @@ exports.view = function (req, res) {
 };
 // Update users
 exports.update = function (req, res) {
-    User.findById(req.params.users_id, function (err, users) {
+    User.findById(req.params.user_id, function (err, users) {
         if (err)
             res.send(err);
         users.name = req.body.name ? req.body.name : users.name;
@@ -57,7 +56,6 @@ exports.update = function (req, res) {
         users.phone = req.body.phone;
         users.address = req.body.address;
         users.password = req.body.password;
-        users.room_id = req.body.room_id;
         users.keywords = req.body.keywords;
         //save and check errors
         users.save(function (err) {
@@ -73,7 +71,7 @@ exports.update = function (req, res) {
 // Delete users
 exports.delete = function (req, res) {
     User.deleteOne({
-        _id: req.params.users_id
+        _id: req.params.user_id
     }, function (err, contact) {
         if (err)
             res.send(err)

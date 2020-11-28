@@ -23,10 +23,6 @@ var companiesSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    rooms_id: {
-        type: String,
-        required: true
-    },
     details: {
         type: String,
         required: true

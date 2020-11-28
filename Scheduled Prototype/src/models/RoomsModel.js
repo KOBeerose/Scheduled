@@ -9,9 +9,12 @@ var roomsSchema = mongoose.Schema({
     },
     type: {
         type: String,
-        required: true
     },
     status: {
+        type: String,
+        required: true
+    },
+    company_id: {
         type: String,
         required: true
     },
@@ -20,6 +23,9 @@ var roomsSchema = mongoose.Schema({
         required: true
     },
     waiters_id: {
+        type: Array,
+    },
+    room_code: {
         type: String,
         required: true
     },
