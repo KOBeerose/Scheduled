@@ -1,3 +1,3 @@
 # Scheduled Prototype
-This is the code source for "Scheduled" prototype  written by TAHA ELGHABI a A2S memeber for the CJEM competition.
+This is the backend code for the "Scheduled"'s prototype that I wrote when competing as an A2S memeber in the CJEM competition.
 <br>Check it out at: https://dev.scheduled.ma/
