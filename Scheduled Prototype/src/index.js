@@ -17,10 +17,10 @@ var apiRoutes = require("./routes")
 app.use('/api', apiRoutes)
 
 // Welcome message
-app.get('/', (req, res) => res.send('Taha le codeur Meloki le decodeur'));
+app.get('/', (req, res) => res.send('Taha le codeur'));
 // Launch app to the specified port
 app.listen(port, function () {
-    console.log("Running FirstRest on Port f tbon mok number: " + port);
+    console.log("Running FirstRest on Port number: " + port);
 })
 
 
