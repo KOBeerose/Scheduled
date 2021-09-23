@@ -49,7 +49,7 @@ exports.view = function (req, res) {
 };
 // view room status and number in q 
 exports.viewdetails = function (req, res) {
-    Room.find('rome_code' = rooms.room_code, function (err, rooms) {
+    Room.find("rome_code" == rooms.room_code, function (err, rooms) {
         if (err)
             res.send(err);
         res.json({
