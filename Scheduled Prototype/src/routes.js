@@ -1,50 +1,20 @@
-//routes.js
-//initialize express router
-let router = require('express').Router();
-//set default API response
-router.get('/', function (req, res) {
+let router = require('express').Router(),
+companyController = require('./controllers/companyController.js'),
+roomController = require('./controllers/roomController.js');
+
+router.get('/', function(req, res) {
     res.json({
-        status: 'API 7way',
-        message: 'This API is Made by Anas'
+        status: 'success',
+        message: ''
     });
 });
 
-//Import users Controller
-var usersController = require('./controllers/usersController');
-// users routes
-router.route('/users')
-    .get(usersController.index)
-    .post(usersController.add);
-router.route('/users/:user_id')
-    .get(usersController.view)
-    .patch(usersController.update)
-    .put(usersController.update)
-    .delete(usersController.delete);
-//Import rooms Controller
-var roomsController = require('./controllers/roomsController');
-// rooms routes
-router.route('/rooms')
-    .get(roomsController.index)
-    .post(roomsController.add);
-router.route('/rooms/:room_id')
-    .get(roomsController.view)
-    .patch(roomsController.update)
-    .put(roomsController.update)
-    .delete(roomsController.delete);
-//Import companies Controller
-var companiesController = require('./controllers/companiesController');
-// companies routes
-router.route('/companies')
-    .get(companiesController.index)
-    .post(companiesController.add);
-router.route('/companies/:company_id')
-    .get(companiesController.view)
-    .patch(companiesController.update)
-    .put(companiesController.update)
-    .delete(companiesController.delete);
-router.route('/:company_id')
-    .get(companiesController.viewdetails)
-router.route('/:company_id/:room_code')
-    .get(roomsController.viewdetails)
-//Export API routes
+router.put('/room/:roomCode', roomController.addUserToRoom);
+router.delete('/room/:roomCode', roomController.removeUserFromRoom);
+router.get('/room/:roomCode', roomController.getDetails);
+router.get('/search', companyController.findCompany);
+router.get('/company/:companyID', companyController.getDetails);
+router.post('/company/:companyID', roomController.createRoom);
+
+
 module.exports = router;
